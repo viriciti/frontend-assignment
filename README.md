@@ -70,7 +70,7 @@ On websocket stream the data should look like this:
 ## Read up material
 Looking to level up your knowledge and skills? These are some good articles/courses that you can check out.
 * [Vue JS](https://vuejs.org/)
-* [ReactJS JS](https://reactjs.org/)
+* [ReactJS](https://reactjs.org/)
 * [Chartjs](https://www.chartjs.org/)
 * [Node.js WebSocket](https://flaviocopes.com/node-websockets/)
 ### General
