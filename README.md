@@ -43,6 +43,8 @@ As you can see in this repository there are no webpack configuration  and fronte
 
 ### Get Creative!
 You can also extend the functionality for both front end and back end of the application. For example, making a more informative front end or incident for vehicle that went to fast on the road (this can be done both in the front end and back end, double points for back end implementation ;) )
+### FE Framework!
+You can use the frontend framework that you want! (but preferably ReactJS or VueJS)
 
 ### The data
 On websocket stream the data should look like this:
@@ -68,12 +70,13 @@ On websocket stream the data should look like this:
 ## Read up material
 Looking to level up your knowledge and skills? These are some good articles/courses that you can check out.
 * [Vue JS](https://vuejs.org/)
+* [ReactJS JS](https://reactjs.org/)
 * [Chartjs](https://www.chartjs.org/)
 * [Node.js WebSocket](https://flaviocopes.com/node-websockets/)
 ### General
 * Learn [Node.js and it's modules](http://nodeschool.io/#workshoppers)
 
 ## Questions
-If you have any questions about the assignment or project setup feel free to contact us at <a href='mailto:e.tamames@viriciti.com'>e.tamames@viriciti.com</a> or <a href='mailto:s.surur@viriciti.com'>s.surur@viriciti.com</a>. You can also come by the office. We're always ready to help.
+If you have any questions about the assignment or project setup feel free to contact us at <a href='mailto:enrique.tamames@chargepoint.com'>enrique.tamames@chargepoint.com</a> or <a href='mailto:marco.vanharten@chargepoint.com'>marco.vanharten@chargepoint.com</a>. You can also come by the office. We're always ready to help.
 
 Good luck with the assignment!
