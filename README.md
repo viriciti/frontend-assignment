@@ -1,5 +1,5 @@
 
-# ViriCiti Frontend Assignment
+# ChargePoint Frontend Assignment
 ---
 ![](https://imgs.xkcd.com/comics/self_description.png)
 
