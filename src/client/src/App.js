@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Map from "./components/Map";
 
-// AIzaSyA2MbR4z_w-y6XsPGRXTCQ9xSDEiWDtzms
 /*
   {
     energy: 57.933,
