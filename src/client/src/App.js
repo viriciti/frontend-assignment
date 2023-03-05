@@ -2,7 +2,8 @@ import logo from "./logo.svg";
 import { useEffect, useState } from "react";
 import "./App.css";
 import Map from "./components/Map";
-
+import Stats from "./components/Stats";
+import Grid from "@mui/material/Grid";
 /*
   {
     energy: 57.933,
@@ -43,15 +44,21 @@ function App() {
   return (
     <div>
       {data ? (
-        <div className="app">
-          <div className="map-stats">
+        <Grid container spacing={10}>
+          <Grid item xs={4} md={4}>
             <Map location={data.gps} zoomLevel={17} />
-          </div>
-          <div>
-            <h2>Speed Profile</h2>
-            <h2>State of Charge Profile</h2>
-          </div>
-        </div>
+          </Grid>
+          <Grid item xs={8} md={8}>
+            <Stats
+              currentSpeed={data.speed}
+              stateOfCharge={data.soc}
+              energy={data.energy}
+              odometer={data.odo}
+            />
+          </Grid>
+          <Grid item xs={6} md={4}></Grid>
+          <Grid item xs={6} md={8}></Grid>
+        </Grid>
       ) : null}
     </div>
   );
