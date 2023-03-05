@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import GoogleMapReact from "google-map-react";
 import "./map.css";
 import env from "../.env.json";
@@ -8,7 +8,6 @@ const Map = ({ location, zoomLevel }) => {
     return (
       <div className="map">
         <h2 className="map-h2">Come Visit Us At Our Campus</h2>
-
         <div className="google-map">
           <GoogleMapReact
             bootstrapURLKeys={{
@@ -16,6 +15,7 @@ const Map = ({ location, zoomLevel }) => {
             }}
             defaultCenter={location}
             defaultZoom={zoomLevel}
+            center={location}
           >
             <LocationPin
               lat={location.lat}
