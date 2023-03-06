@@ -23,16 +23,14 @@ const location = {
 };
 
 function App() {
-  const [data, setData] = useState([]);
-
+  const [data_, setData] = useState([]);
   useEffect(() => {
     const socket = new WebSocket("ws://localhost:3000");
-
     socket.addEventListener("message", (event) => {
-      const data = JSON.parse(event.data);
-      console.log("incoming data", data);
-      setData((prevData) => [
-        ...prevData,
+      if (data_.length === 1000) socket.close();
+      let data = JSON.parse(event.data);
+      setData((prev) => [
+        ...prev,
         {
           ...data,
           gps: {
@@ -44,36 +42,59 @@ function App() {
     });
 
     return () => {
-      console.log("entered");
+      socket.removeEventListener("message");
       socket.close();
     };
   }, []);
-  console.log(data);
+  console.log(data_);
+  // useEffect(() => {
+  //   const socket = new WebSocket("ws://localhost:3000");
+
+  //   socket.addEventListener("message", (event) => {
+  //     const data = JSON.parse(event.data);
+  //     console.log("incoming data", data);
+  //     setData((prevData) => [
+  //       ...prevData,
+  //       {
+  //         ...data,
+  //         gps: {
+  //           lat: data.gps.split("|").map((loc) => Number(loc))[0],
+  //           lng: data.gps.split("|").map((loc) => Number(loc))[1]
+  //         }
+  //       }
+  //     ]);
+  //   });
+
+  //   return () => {
+  //     console.log("entered");
+  //     socket.close();
+  //   };
+  // }, []);
   return (
     <div>
-      {data.length ? (
+      {data_.length ? (
         <Grid container spacing={10}>
           <Grid item xs={4} md={4}>
-            <Map location={data[data.length - 1].gps} zoomLevel={17} />
+            <Map location={data_[data_.length - 1].gps} zoomLevel={17} />
           </Grid>
           <Grid item xs={8} md={8}>
             <Stats
-              currentSpeed={data[data.length - 1].speed}
-              stateOfCharge={data[data.length - 1].soc}
-              energy={data[data.length - 1].energy}
-              odometer={data[data.length - 1].odo}
+              currentSpeed={data_[data_.length - 1].speed}
+              stateOfCharge={data_[data_.length - 1].soc}
+              energy={data_[data_.length - 1].energy}
+              odometer={data_[data_.length - 1].odo}
             />
           </Grid>
           <Grid item xs={6} md={12}>
             <div style={{ padding: "2em" }}>
               <SpeedProfile
-                data={data.map((p) => ({ speed: p.speed, time: p.time }))}
+                data={data_.map((p) => ({ speed: p.speed, time: p.time }))}
               />
             </div>
           </Grid>
           <Grid item xs={6} md={12}>
             <ChargeProfile
-              data={data.map((p) => ({ soc: p.soc, time: p.time }))}
+              data={data_.map((p) => ({ soc: p.soc, time: p.time }))}
             />
           </Grid>
         </Grid>
