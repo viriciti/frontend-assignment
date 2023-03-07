@@ -17,11 +17,6 @@ import ChargeProfile from "./components/ChargeProfile";
   }
 */
 
-const location = {
-  lat: 37.42216,
-  lng: -122.08427
-};
-
 function App() {
   const [data_, setData] = useState([]);
   useEffect(() => {
@@ -46,58 +41,38 @@ function App() {
       socket.close();
     };
   }, []);
-  console.log(data_);
-  // useEffect(() => {
-  //   const socket = new WebSocket("ws://localhost:3000");
-
-  //   socket.addEventListener("message", (event) => {
-  //     const data = JSON.parse(event.data);
-  //     console.log("incoming data", data);
-  //     setData((prevData) => [
-  //       ...prevData,
-  //       {
-  //         ...data,
-  //         gps: {
-  //           lat: data.gps.split("|").map((loc) => Number(loc))[0],
-  //           lng: data.gps.split("|").map((loc) => Number(loc))[1]
-  //         }
-  //       }
-  //     ]);
-  //   });
-
-  //   return () => {
-  //     console.log("entered");
-  //     socket.close();
-  //   };
-  // }, []);
   return (
-    <div>
+    <div className="font-mono flex flex-col" style={{ rowGap: "5em" }}>
+      <h1>Viriciti</h1>
       {data_.length ? (
-        <Grid container spacing={10}>
-          <Grid item xs={4} md={4}>
-            <Map location={data_[data_.length - 1].gps} zoomLevel={17} />
-          </Grid>
-          <Grid item xs={8} md={8}>
-            <Stats
-              currentSpeed={data_[data_.length - 1].speed}
-              stateOfCharge={data_[data_.length - 1].soc}
-              energy={data_[data_.length - 1].energy}
-              odometer={data_[data_.length - 1].odo}
-            />
-          </Grid>
-          <Grid item xs={6} md={12}>
-            <div style={{ padding: "2em" }}>
-              <SpeedProfile
-                data={data_.map((p) => ({ speed: p.speed, time: p.time }))}
+        <>
+          <div
+            className="flex flex-col md:flex-row"
+            style={{ columnGap: "5em", justifyContent: "space-between" }}
+          >
+            <div className="md:w-2/5">
+              <Map location={data_[data_.length - 1].gps} zoomLevel={17} />
+            </div>
+            <div className="md:w-3/5">
+              <Stats
+                currentSpeed={data_[data_.length - 1].speed}
+                stateOfCharge={data_[data_.length - 1].soc}
+                energy={data_[data_.length - 1].energy}
+                odometer={data_[data_.length - 1].odo}
               />
             </div>
-          </Grid>
-          <Grid item xs={6} md={12}>
+          </div>
+          <div style={{ padding: "1em" }}>
+            <SpeedProfile
+              data={data_.map((p) => ({ speed: p.speed, time: p.time }))}
+            />
+          </div>
+          <div>
             <ChargeProfile
               data={data_.map((p) => ({ soc: p.soc, time: p.time }))}
             />
-          </Grid>
-        </Grid>
+          </div>
+        </>
       ) : null}
     </div>
   );

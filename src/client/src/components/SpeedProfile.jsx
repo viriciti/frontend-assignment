@@ -35,7 +35,7 @@ const SpeedProfile = React.memo(({ data }) => {
   return (
     <>
       <h4>Speed Profile</h4>
-      <LineChart width={1400} height={300} data={chartData}>
+      <LineChart width={1100} height={300} data={chartData}>
         <XAxis
           label={{ value: "Time", angle: 0, position: "insideLeft" }}
           tick={() => null}

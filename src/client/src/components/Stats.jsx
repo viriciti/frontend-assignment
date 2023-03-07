@@ -13,16 +13,9 @@ const Stats = ({ currentSpeed = 0, stateOfCharge, energy, odometer }) => {
   }, [stateOfCharge]);
 
   return (
-    <div className="stats">
-      <div style={{ display: "flex" }}>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            columnGap: "2em",
-            width: "50%"
-          }}
-        >
+    <div className="flex flex-col flex-wrap	" style={{ rowGap: "10em" }}>
+      <div className="flex flex-wrap">
+        <div>
           <h4>Current Speed</h4>
           <GaugeChart
             id="gauge-chart2"
@@ -35,14 +28,7 @@ const Stats = ({ currentSpeed = 0, stateOfCharge, energy, odometer }) => {
         </div>
         <div>
           <h4>State of Charge</h4>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              columnGap: "2em",
-              width: "50%"
-            }}
-          >
+          <div>
             <GaugeChart
               id="gauge-chart2"
               nrOfLevels={20}
@@ -54,14 +40,16 @@ const Stats = ({ currentSpeed = 0, stateOfCharge, energy, odometer }) => {
         </div>
       </div>
 
-      <div style={{ display: "flex", columnGap: "10em" }}>
-        <div>
-          <h4>Energy</h4>
-          <p>{energy} kW</p>
+      <div className="flex">
+        <div className="flex-grow">
+          <button class="border-2 border-purple-500 hover:border-gray-500 p-8">
+            Energy: {energy} kW
+          </button>
         </div>
-        <div>
-          <h4>Odometer</h4>
-          <p>{Math.floor(odometer)} km</p>
+        <div className="flex-grow">
+          <button class="border-2 border-purple-500 hover:border-gray-500 p-8">
+            Odometer: {Math.floor(odometer)} km
+          </button>
         </div>
       </div>
     </div>
