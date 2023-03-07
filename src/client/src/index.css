@@ -5,15 +5,3 @@
 body {
   padding: 4em;
 }
-.map-stats {
-  display: flex;
-  justify-content: center;
-}
-.app {
-  display: flex;
-  flex-direction: column;
-}
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}

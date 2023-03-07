@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Map from "./components/Map";
 import Stats from "./components/Stats";
-import Grid from "@mui/material/Grid";
 import SpeedProfile from "./components/SpeedProfile";
 import ChargeProfile from "./components/ChargeProfile";
 /*

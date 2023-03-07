@@ -1,7 +1,5 @@
-import "./stats.css";
 import React, { useState, useEffect } from "react";
 import GaugeChart from "react-gauge-chart";
-import Grid from "@mui/material/Grid";
 
 const Stats = ({ currentSpeed = 0, stateOfCharge, energy, odometer }) => {
   const [soc, setSOC] = useState(stateOfCharge);
@@ -10,7 +8,7 @@ const Stats = ({ currentSpeed = 0, stateOfCharge, energy, odometer }) => {
     if (soc !== stateOfCharge) {
       setSOC(stateOfCharge);
     }
-  }, [stateOfCharge]);
+  }, [stateOfCharge, soc]);
 
   return (
     <div className="flex flex-col flex-wrap	" style={{ rowGap: "10em" }}>
@@ -48,7 +46,7 @@ const Stats = ({ currentSpeed = 0, stateOfCharge, energy, odometer }) => {
         </div>
         <div className="flex-grow">
           <button class="border-2 border-purple-500 hover:border-gray-500 p-8">
-            Odometer: {Math.floor(odometer)} km
+            Odometer: {odometer} km
           </button>
         </div>
       </div>

@@ -30,7 +30,7 @@ class Broadcaster extends EventEmitter {
               setTimeout(() => {
                 this.emit("data", obj);
                 cb();
-              }, 1000);
+              }, Math.ceil(Math.random() * 1000));
             }
           })
         )
@@ -40,7 +40,6 @@ class Broadcaster extends EventEmitter {
             console.log("Re-broadcast");
             broadcast();
           } else {
-            console.log("Stopped broadcast");
             this.end();
             return;
           }
@@ -50,7 +49,6 @@ class Broadcaster extends EventEmitter {
   }
 
   end() {
-    console.log("STOPPING");
     this.broadcasting = false;
   }
 }
